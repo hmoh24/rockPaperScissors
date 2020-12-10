@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Rock Paper Scissors Game</h1>
+        <script>
+
+            // Computer and Player selections //
+
+            let playerInputVal = prompt('Please choose rock, paper, or scissors.');
+            let playerInputValLower= playerInputVal.toLowerCase();
+            console.log('Player chose ' + playerInputValLower);
+
+            let computerSelectables = ['rock', 'paper', 'scissors'];
+            function randomGenerator(min, max){                         // Function to generate a random integer between 0 and array length //
+                return Math.round(Math.random() * (max-min) + min);     // Function is not truly random because range is 0-2 therefore 1 is the most likely selection when rounding from a decimal //
+            }
+            let randomInt = randomGenerator(0, computerSelectables.length -1)
+            let randomCompSelect = computerSelectables[randomInt];
+            console.log('Computer chose ' + randomCompSelect); 
+            
+
+            // Win, loss and draw function //
+            function playGame(player, computer) {
+            if (player === computer) {
+                return 'Draw!';
+            }
+
+            else if (player === 'rock' && computer === 'scissors' || player === 'scissors' && computer === 'paper' || player === 'paper' && computer === 'rock') {
+                return 'One point for the player!';
+            }
+
+            else if (computer === 'rock' && player === 'scissors' || computer === 'scissors' && player === 'paper' || computer === 'paper' && player === 'rock') {
+                return 'One point for the AI!';
+            }
+            else (player !== 'rock' || 'paper' || 'scissors') 
+            {
+                return 'Please choose rock, paper, or scissors only!';
+            }
+            }
+
+            console.log(playGame(playerInputValLower, randomCompSelect));
+            let result = playGame(playerInputValLower, randomCompSelect);
+            let playerScore = 0;
+            let compScore = 0;
+            
+            // Function to increment score depending on result of previous function //
+            function gameLoopScore(result){
+                if (result === 'One point for the player!') {
+                    return ++playerScore;
+                }
+
+                else if (result === 'One point for the AI!') 
+                {
+                    return ++compScore;
+                }
+
+                else (result === 'Draw!' || result === 'Please choose rock, paper, or scissors only!') 
+                {
+                    return 'No change in score.'
+                }
+                }
+
+            console.log(gameLoopScore(playGame(playerInputValLower, randomCompSelect)));
+            alert('Player score is ' + playerScore);                                        
+            alert('AI score is ' + compScore);
+            
+            
+
+
+            // Loop to play until 5 is reached //
+            while (playerScore < 5 && compScore < 5) {  
+                let playerInputVal = prompt('Please choose rock, paper, or scissors.');
+                let playerInputValLower= playerInputVal.toLowerCase();
+                console.log('Player chose ' + playerInputValLower);
+
+                let randomInt = randomGenerator(0, computerSelectables.length -1);
+                let randomCompSelect = computerSelectables[randomInt];
+                console.log('Computer chose ' + randomCompSelect);
+
+                console.log(playGame(playerInputValLower, randomCompSelect));
+                let result = playGame(playerInputValLower, randomCompSelect);
+
+                console.log(gameLoopScore(playGame(playerInputValLower, randomCompSelect)));
+                alert('Player score is ' + playerScore);
+                alert('AI score is ' + compScore);
+            }
+
+            if (playerScore === 5) {
+                alert('Congratulations! You have won ' + playerScore + ' to ' + compScore + ' .');
+            }
+
+            if (compScore === 5) {
+                alert('Unlucky! You have lost ' + compScore + ' to ' + playerScore + ' .');
+            }
+
+            
+
+
+        </script>
+    </body>
+</html>
