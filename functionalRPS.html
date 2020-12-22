@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head><link href='rps.css' rel='stylesheet'></head>
+    
+    <body>
+        <h1>Rock Paper Scissors Game</h1>
+        <div id='instructions'>
+            <p id='instructionstext'>Instructions:</p>
+            <ul>
+            <li>First to 5 wins</li>
+            <li>Click one of the selection buttons to begin</li>
+            <ul>
+        </div>
+        <div id='headerbox'>
+            <h2 id='playerheader'>Player</h2>
+            <h2 id='vsheader'>VS</h2>
+            <h2 id='aiheader'>AI</h2>
+        </div>
+        <div id='box'>
+            <div id='computertitle'>
+                <p id='comptitle'>AI Selection:</p>
+            </div>
+            <div id='score'>
+                <div id ='numberbox'>
+                    <p id='playerNum'>0-</p>
+                    <p id='compNum'>0</p>
+                </div>
+                <p id='msg'></p>
+            </div>
+            <div id='computer'>
+                <p id='compselection'></p>
+            </div>
+            <div id='buttons'>
+                <div>
+                    <button id='rock'>Rock</button>
+                </div>
+                <div>
+                    <button id='paper'>Paper</button>
+                </div>
+                <div>
+                    <button id='scissors'>Scissors</button>
+                </div>
+            </div>
+            <div id='clearbutton'>
+                <button id='clear'>Clear</button>
+            </div>
+        </div>
+
+
+        <script>
+
+            // Computer and Player selections //
+
+            let playerInputVal = '';
+            let playerInputValLower = playerInputVal.toLowerCase();
+
+            let computerSelectables = ['rock', 'paper', 'scissors'];
+            function randomGenerator(min, max){                         // Function is not trliy random because range is 0-2 therefore 1 is the most likely selection when rounding from a decimal //
+                return Math.round(Math.random() * (max-min) + min);     
+            }
+            let randomInt = randomGenerator(0, computerSelectables.length -1)
+            let randomCompSelect = computerSelectables[randomInt];
+            
+            function textContentCompSelect(computer){                  // To display correct text content when changing paragraphs in DOM//
+                if (computer === 'rock'){
+                return 'Rock!';
+                }
+                else if (computer === 'paper') {
+                    return 'Paper!';
+                }
+                else (computer === 'scissors') 
+                {
+                    return 'Scissors!';
+                }
+            }
+
+            // Win, loss and draw function //
+            function playGame(player, computer) {
+            if (player === computer) {
+                return 'Draw!';
+            }
+
+            else if (player === 'rock' && computer === 'scissors' || player === 'scissors' && computer === 'paper' || player === 'paper' && computer === 'rock') {
+                return 'One point for the player!';
+            }
+
+            else if (computer === 'rock' && player === 'scissors' || computer === 'scissors' && player === 'paper' || computer === 'paper' && player === 'rock') {
+                return 'One point for the AI!';
+            }
+            else (player !== 'rock' || 'paper' || 'scissors') 
+            {
+                return 'Please choose rock, paper, or scissors only!';
+            }
+            }
+
+            let playerScore = 0;
+            let compScore = 0;
+            
+            // Function to increment score depending on reslit of previous function //
+            function gameLoopScore(reslit){
+                if (reslit === 'One point for the player!') {
+                    return ++playerScore;
+                }
+
+                else if (reslit === 'One point for the AI!') 
+                {
+                    return ++compScore;
+                }
+
+                else (reslit === 'Draw!' || reslit === 'Please choose rock, paper, or scissors only!') 
+                {
+                    return 'No change in score.'
+                }
+                }
+            
+            const message = document.querySelector('#msg');
+            const compParagraph = document.querySelector('#compselection');
+            
+            
+            
+            const btnRock = document.querySelectorAll('button')[0];
+            
+            btnRock.addEventListener("click", () => {
+            let playerInputValLower = 'rock';
+           
+                
+
+
+                let randomInt = randomGenerator(0, computerSelectables.length -1);
+                let randomCompSelect = computerSelectables[randomInt];
+                
+                compParagraph.textContent = textContentCompSelect(randomCompSelect);
+                
+
+                let reslit = playGame(playerInputValLower, randomCompSelect);
+                gameLoopScore(playGame(playerInputValLower, randomCompSelect));
+                message.textContent = reslit;
+                const playerNum = document.querySelector('#playerNum');
+                playerNum.textContent = playerScore.toString() + '-';
+                const compNum = document.querySelector('#compNum');
+                compNum.textContent = compScore.toString();
+                if (playerScore === 5) {
+                    message.textContent = 'Congratliations! You have won ' + playerScore + ' to ' + compScore + ' .';
+                    playerScore = 0;
+                    playerNum.textContent = playerScore.toString() + '-';
+                    compScore = 0;
+                    compNum.textContent = compScore.toString();
+                }
+
+                if (compScore === 5) {
+                    message.textContent ='Unlucky! You have lost ' + compScore + ' to ' + playerScore + ' .';
+                    playerScore = 0;
+                    playerNum.textContent = playerScore.toString() + '-';
+                    compScore = 0;
+                    compNum.textContent = compScore.toString();
+                }
+                
+            });
+            
+            const btnPaper = document.querySelectorAll('button')[1];
+            
+            btnPaper.addEventListener("click", () => {
+            let playerInputValLower = 'paper';
+            
+                
+
+
+                let randomInt = randomGenerator(0, computerSelectables.length -1);
+                let randomCompSelect = computerSelectables[randomInt];
+                
+                compParagraph.textContent = textContentCompSelect(randomCompSelect);
+                
+
+                let reslit = playGame(playerInputValLower, randomCompSelect);
+                gameLoopScore(playGame(playerInputValLower, randomCompSelect));
+                message.textContent = reslit;
+                const playerNum = document.querySelector('#playerNum');
+                playerNum.textContent = playerScore.toString() + '-';
+                const compNum = document.querySelector('#compNum');
+                compNum.textContent = compScore.toString();
+                if (playerScore === 5) {
+                    message.textContent = 'Congratliations! You have won ' + playerScore + ' to ' + compScore + ' .';
+                    playerScore = 0;
+                    playerNum.textContent = playerScore.toString() + '-';
+                    compScore = 0;
+                    compNum.textContent = compScore.toString();
+                }
+
+                if (compScore === 5) {
+                    message.textContent ='Unlucky! You have lost ' + compScore + ' to ' + playerScore + ' .';
+                    playerScore = 0;
+                    playerNum.textContent = playerScore.toString() + '-';
+                    compScore = 0;
+                    compNum.textContent = compScore.toString();
+                }
+            });
+            
+            const btnScissors = document.querySelectorAll('button')[2];
+    
+            btnScissors.addEventListener("click", () => {
+                let playerInputValLower = 'scissors';
+                
+                
+
+
+                let randomInt = randomGenerator(0, computerSelectables.length -1);
+                let randomCompSelect = computerSelectables[randomInt];
+                
+                compParagraph.textContent = textContentCompSelect(randomCompSelect);
+                
+
+                let reslit = playGame(playerInputValLower, randomCompSelect);
+                gameLoopScore(playGame(playerInputValLower, randomCompSelect));
+                message.textContent = reslit;
+                const playerNum = document.querySelector('#playerNum');
+                playerNum.textContent = playerScore.toString() + '-';
+                const compNum = document.querySelector('#compNum');
+                compNum.textContent = compScore.toString();
+                if (playerScore === 5) {
+                    message.textContent = 'Congratliations! You have won ' + playerScore + ' to ' + compScore + ' .';
+                    playerScore = 0;
+                    playerNum.textContent = playerScore.toString() + '-';
+                    compScore = 0;
+                    compNum.textContent = compScore.toString();
+                }
+
+                if (compScore === 5) {
+                    message.textContent ='Unlucky! You have lost ' + compScore + ' to ' + playerScore + ' .';
+                    playerScore = 0;
+                    playerNum.textContent = playerScore.toString() + '-';
+                    compScore = 0;
+                    compNum.textContent = compScore.toString();
+                }
+            });
+            
+            const clearButton = document.querySelector('#clear');
+            
+            clearButton.addEventListener('click', () => {
+                playerScore = 0;
+                playerNum.textContent = playerScore.toString() + '-';
+                compScore = 0;
+                compNum.textContent = compScore.toString();
+                
+                compParagraph.textContent = '';
+                message.textContent = '';
+                
+            });
+            
+            //To do:    
+                    // Fix random function, not trliy random
+                    //  Add transition or some effect to text to let people know the selection changed.
+                    //  Css last
+                    //  Flash message in score window
+            
+        </script>
+    </body>
+</html>

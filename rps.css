@@ -1,0 +1,205 @@
+html {
+    background-color: cornsilk;
+    height: 100vh;
+    font-family: 'Segoe UI';
+}
+
+h1 {
+    margin: 10px 10px 10px;
+    color: maroon;
+    font-size: 50px;
+    font-family: 'Segoe UI';
+}
+
+#instructions {
+    position: absolute;
+    right: 20px;
+    padding: 5px;
+    background-color: white;
+    border: 5px solid #800000;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+}
+
+#instructionstext {
+    color: maroon;
+    margin: 5px 0px 5px 22px;
+    text-decoration-line: underline;
+}
+
+li {
+    color: maroon;
+    margin: 5px;
+    font-size: 1.1rem;
+}
+
+
+
+#headerbox {
+    display: flex;
+    flex-direction: row;
+    color: maroon;
+    font-size: 30px;
+    width: 608px;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+
+#playerheader{
+    margin: 0px 50px 50px 0px;
+    font-family: cursive;
+    font-style: italic;
+    color: #008080;
+}
+
+#vsheader {
+    margin: 0px 50px 50px 0px;
+    font-family: 'Segoe UI';
+    
+}
+
+#aiheader{
+    margin: 0px 50px 50px 0px;
+    font-family: monospace;
+    color: gray;
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    margin: 5px;
+    color: #008080;
+    border: 5px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px white;
+    height: 200px;
+    width: 275px;
+    font-size: 2rem;
+    font-family: 'Segoe UI';
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    box-shadow: 0px 0px 10px #008080;
+}
+
+p {
+    font-size: 2rem;
+    color: white;
+}
+
+#box {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: 1fr 4fr 2fr 3fr;
+    height: 70vh;
+    width: 80vw;
+    border: 3px solid white;
+    
+}
+
+#computertitle {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#comptitle {
+    color: gray;
+    text-decoration-line: underline;
+    font-weight: bold;
+    font-size: 35px;
+    font-family: 'Segoe UI';
+}
+
+#score {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background-color: black;
+    border: solid 2px gray;
+    box-shadow: 0px 0px 50px greenyellow ;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 193px 107px;
+    align-items: center;
+    height: 300px
+}
+
+#msg {
+    justify-self: center;
+    color:greenyellow;
+    font-family: 'Segoe UI';
+}
+
+#playerNum, #compNum {
+    color:greenyellow;
+    font-family: 'Segoe UI';
+}
+
+#computer {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: maroon;
+}
+
+#compselection {
+    color:gray;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    font-size: 75px;
+}
+
+#buttons {
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#clearbutton {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clear {
+    height: 150px;
+    width: 545px;
+    font-size: 2rem;
+    color: maroon;
+}
+
+#clear:active{
+    box-shadow: 0px 0px 10px maroon;
+}
+
+
+#numberbox {
+    color:greenyellow;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
