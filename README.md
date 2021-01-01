@@ -8,4 +8,8 @@ I came back to this roughly two weeks later to add an interface so that the game
 
 Creating functions and loops are more comfortable to me now after practice, but manipulating the DOM, which is a large part of javascript, is more difficult. It represents a new way of programming for me, and although I managed to complete this project, reading through my javascript code I can see problems. For example, there is a lot of copied and pasted code in the buttons. I found it difficult to make it work any other way, but in the future I would like to reduce the amount of repeated code as much as possible.
 
+Improvements:
+
+As I am writing the code for my next javascript project, I have figured out how to reduce the repeated code in this project. I was uncertain of how to 'link' the buttons and the game logic without this repeated code, but now I recognise that the repeated code is essentially the same function in the event handlers of the buttons. I must extract this function, give it a name, and simply slot it into the event handlers of all three buttons. I will aim to refactor this some point in the future.
+
 
